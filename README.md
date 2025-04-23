@@ -21,3 +21,6 @@ Jika dirata-ratakan, waktu pemrosesan data tersebut adalah 0.00117374 detik.
 ## Array
 
 ## Queue
+![Image](https://github.com/user-attachments/assets/d7c0a3eb-50c4-49d7-9718-0d747c12a384)
+![Image](https://github.com/user-attachments/assets/cd2c6d75-7d27-4041-be0d-470f75328089)
+![Image](https://github.com/user-attachments/assets/a6a277eb-e658-43cd-88a6-86044a191f07)
