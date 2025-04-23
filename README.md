@@ -42,6 +42,12 @@ Uji coba ketiga: 0.00112224 detik <br>
 Jika dirata-ratakan, waktu pemrosesan data tersebut adalah 0.00117374 detik.
 
 ## Array
+Pada Array Linear search dan traversal mudah dilakukan, namun butuh waktu lebih lama dalam pengecekan dominasi karena tidak ada efisiensi dalam pencarian.
+![image](https://github.com/user-attachments/assets/446b627f-f908-47a2-8843-beb88156324b)
+![image](https://github.com/user-attachments/assets/44f40d3a-d53c-4231-a645-4be36108a6c4)
+Kode ini nanatinya akan membaca `dataset.csv` yang berada dalam folder yang sama. Menyimpan setiap item ke dalam array struct `Baju`. Skyline Query akan membandingkan setiap pasangan baju berdasarkan 2 kriteria yaitu harga lebih murah dan ulasana lebih tinggi. Array akan cocok pada ukuran dataset yang lebih kecil karena semua data dibandingkan satu persatau melalui `nested loop`. Kompleksitasnya kurang efisien untuk data yang lebih besar.
+
+
 
 ## Queue
 ### Konsep Dasar Queue
