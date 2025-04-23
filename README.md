@@ -45,15 +45,18 @@ Jika dirata-ratakan, waktu pemrosesan data tersebut adalah 0.00117374 detik.
 ## Queue
 ### Konsep Dasar Queue
 Queue adalah struktur data akses sekuensial dengan prinsip:   
----
-> FIFO(First In First Out) 
+
+> FIFO (First In First Out) 
 ---
 Artinya: Elemen yang pertama masuk, akan menjadi yang pertama keluar.  
 Elemen ditambahkan di belakang (tail) dan dikeluarkan dari depan (head).  
 
-
 ### Implementasi
-
+- Inisialisasi Queue
+- Mengambil head
+- Memeriksa yg terbaik
+- Menghapus dari skyline jika ada kandidat baru yang lebih baik
+- Mengulangi proses hingga queue kosong
 
 
 ![Image](https://github.com/user-attachments/assets/d7c0a3eb-50c4-49d7-9718-0d747c12a384)
