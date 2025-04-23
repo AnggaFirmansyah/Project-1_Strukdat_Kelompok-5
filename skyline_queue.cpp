@@ -1,7 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <queue>
 #include <vector>
 #include <chrono>
 using namespace std;
@@ -13,35 +12,31 @@ struct Baju {
     int ulasan;
 };
 
-bool mendominasi(Baju A, Baju B) {
+bool domination (Baju A, Baju B) {
     return (A.harga <= B.harga && A.ulasan >= B.ulasan) &&
            (A.harga < B.harga || A.ulasan > B.ulasan);
 }
 
-vector<Baju> skylineQueryQueue(const vector<Baju>& data) {
-    queue<Baju> q;
+vector<Baju> skylineQueryQueueVector(vector<Baju>& data) {
+    vector<Baju> queue = data;  // menggunakan vector sebagai queue
     vector<Baju> skyline;
 
-    for (const auto& baju : data) {
-        q.push(baju);
-    }
+    while (!queue.empty()) {
+        Baju kandidat = queue.front();       // ambil elemen di depan (Head)
+        queue.erase(queue.begin());          // hapus elemen pertama (FIFO)
 
-    while (!q.empty()) {
-        Baju kandidat = q.front();
-        q.pop();
-        bool didominasi = false;
-
+        bool dominated = false;
         for (auto& s : skyline) {
-            if (mendominasi(s, kandidat)) {
-                didominasi = true;
+            if (domination(s, kandidat)) {
+                dominated = true;
                 break;
             }
         }
 
-        if (!didominasi) {
+        if (!dominated) {
             vector<Baju> baru;
             for (auto& s : skyline) {
-                if (!mendominasi(kandidat, s)) {
+                if (!domination(kandidat, s)) {
                     baru.push_back(s);
                 }
             }
@@ -55,12 +50,10 @@ vector<Baju> skylineQueryQueue(const vector<Baju>& data) {
 
 int main() {
     ifstream file("ind_1000_2_product.csv");
-    vector<Baju> data;
     string line;
+    getline(file, line); // skip header
 
-    // Skip header
-    getline(file, line);
-
+    vector<Baju> data;
     while (getline(file, line)) {
         stringstream ss(line);
         string id_str, label, harga_str, ulasan_str;
@@ -78,18 +71,16 @@ int main() {
     }
 
     auto start = chrono::high_resolution_clock::now();
-
-    vector<Baju> hasil = skylineQueryQueue(data);
-
+    vector<Baju> hasil = skylineQueryQueueVector(data);
     auto end = chrono::high_resolution_clock::now();
-    chrono::duration<double, milli> elapsed = end - start;
+    chrono::duration<double, milli> durasi = end - start;
 
-    cout << "Produk-produk yang masuk skyline:\n";
+    cout << "Skyline Set (menggunakan Queue - Vector):\n";
     for (auto& b : hasil) {
         cout << b.label << " | Harga: " << b.harga << " | Ulasan: " << b.ulasan << endl;
     }
 
-    cout << "\nWaktu eksekusi: " << elapsed.count() << " ms" << endl;
+    cout << "\nWaktu eksekusi: " << durasi.count() << " ms" << endl;
 
     return 0;
 }
